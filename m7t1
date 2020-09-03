@@ -1,0 +1,27 @@
+from abc import ABC, abstractmethod
+
+class Product(ABC):
+
+    def cook():
+        pass
+
+class FettuccineAlfredo(Product):
+    def __init__(self):
+        self.name="Fettuccine Alfredo"
+    def cook():
+        return("Italian main course prepared :".format(self.name))
+class Tiramisu(Product):
+    def __init__(self):
+        self.name="Tiramisu"
+    def cook():
+        return("Italian dessert prepared :".format(self.name))
+class DuckALOrange(Product):
+    def __init__(self):
+        self.name="Duck A L'Orange"
+    def cook():
+        return("French main course prepared :".format(self.name))
+class CremeBrulee(Product):
+    def __init__(self):
+        self.name="Creme brulee"
+    def cook():
+        return("French dessert prepared :".format(self.name))
