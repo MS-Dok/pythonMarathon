@@ -1,27 +1,52 @@
 from abc import ABC, abstractmethod
 
-class Product(ABC):
-
-    def cook():
+class Product:
+    @abstractmethod
+    def cook(self):
+        pass
+class Factory:
+    @abstractmethod
+    def get_dish(self,type_of_meal):
         pass
 
 class FettuccineAlfredo(Product):
     def __init__(self):
         self.name="Fettuccine Alfredo"
-    def cook():
-        return("Italian main course prepared :".format(self.name))
+    def cook(self):
+        print("Italian main course prepared: {}".format(self.name))
 class Tiramisu(Product):
     def __init__(self):
         self.name="Tiramisu"
-    def cook():
-        return("Italian dessert prepared :".format(self.name))
+    def cook(self):
+        print("Italian dessert prepared: {}".format(self.name))
 class DuckALOrange(Product):
     def __init__(self):
-        self.name="Duck A L'Orange"
-    def cook():
-        return("French main course prepared :".format(self.name))
+        self.name="Duck À L'Orange"
+    def cook(self):
+        print("French main course prepared: {}".format(self.name))
 class CremeBrulee(Product):
     def __init__(self):
-        self.name="Creme brulee"
-    def cook():
-        return("French dessert prepared :".format(self.name))
+        self.name="Crème brûlée"
+    def cook(self):
+        print("French dessert prepared: {}".format(self.name))
+
+
+class ItalianDishesFactory(Factory):
+    def get_dish(self,type_of_meal):
+        if type_of_meal=="main":
+            return FettuccineAlfredo()
+        else:
+            return Tiramisu()
+class FrenchDishesFactory(Factory):
+    def get_dish(self,type_of_meal):
+        if type_of_meal=="main":
+            return DuckALOrange()
+        else:
+            return CremeBrulee()
+
+class FactoryProducer():
+    def get_factory(self,type_of_factory):
+        if type_of_factory=='italian':
+            return ItalianDishesFactory()
+        else:
+            FrenchDishesFactory()
